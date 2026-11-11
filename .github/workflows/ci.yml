@@ -16,4 +16,4 @@ jobs:
       # No ROM in CI: build the recompiler and check the setup scripts parse.
       - run: cmake -S gbrecomp -B gbrecomp/build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build gbrecomp/build --target gbrecomp
       - run: bash -n setup.sh
-      - run: pwsh -NoProfile -Command '$null = [System.Management.Automation.Language.Parser]::ParseFile("tools/setup.ps1", [ref]$null, [ref]$e); if ($e) { $e; exit 1 }'
+      - run: pwsh -NoProfile -Command '$t = $null; $e = $null; $null = [System.Management.Automation.Language.Parser]::ParseFile("tools/setup.ps1", [ref]$t, [ref]$e); if ($e) { $e; exit 1 }'
