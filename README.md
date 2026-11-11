@@ -14,11 +14,7 @@ siblings: [Super Mario Land](https://github.com/sp00nznet/supermarioland-recomp)
 **You need your own copy of the game.** No ROM, and nothing generated from
 one, is in this repository.
 
-![Wario Land: Super Mario Land 3, recompiled](docs/hero.gif)
-
-From the Rice Beach map into the first course, Wario walking and shoulder-bashing, every frame drawn by the recompiled game.
-
-## Status: **boots and plays.** First bring-up; not yet played through.
+## Status: **v0.1.0, alpha.** Boots and plays; not yet played through.
 
 | Stage | State |
 |---|---|
@@ -27,6 +23,14 @@ From the Rice Beach map into the first course, Wario walking and shoulder-bashin
 | Boot | DMG power-on state (`GB_MODEL_DMG`), so the game sees an original Game Boy |
 | Reached | The intro on the boat, the file-select screen, the Rice Beach map, the first course: Wario walking, jumping and shoulder-bashing |
 | Not yet checked | A full playthrough, battery saves surviving a restart, audio against the original |
+
+What's next is in [ROADMAP.md](ROADMAP.md); changes are in [CHANGELOG.md](CHANGELOG.md).
+
+## Screenshots
+
+![Wario Land: Super Mario Land 3, recompiled](docs/hero.gif)
+
+From the Rice Beach map into the first course, Wario walking and shoulder-bashing, every frame drawn by the recompiled game.
 
 ## Getting started
 
@@ -75,7 +79,7 @@ cmake --build build --config Release
 ./build/Release/rom.exe
 ```
 
-### Controls and flags
+## Usage
 
 Arrows or WASD move, Z or J is A, X or K is B, Enter is Start, Right Shift or
 Backspace is Select (all rebindable). A gamepad
@@ -97,8 +101,19 @@ works too, and the menu bar has settings, scaling, palettes and save states.
 | `gbrecomp/` | [gb-recompiled](https://github.com/sp00nznet/gb-recompiled) (submodule): recompiler and runtime |
 | `generated/` | Your recompiled ROM (git-ignored, made in step 2) |
 
-## Legal
+## Credits
 
-Wario Land: Super Mario Land 3 is © Nintendo. This project contains no game code or data and is
-not affiliated with or endorsed by Nintendo. The code here is MIT-licensed
-([LICENSE](LICENSE)).
+- Recompiler and runtime: [arcanite24/gb-recompiled](https://github.com/arcanite24/gb-recompiled)
+  (MIT), with our changes in [sp00nznet/gb-recompiled](https://github.com/sp00nznet/gb-recompiled).
+  It is a git submodule here; none of its code is copied into this repository.
+- Setup scripts follow [LinksAwakening](https://github.com/sp00nznet/LinksAwakening)'s.
+
+Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+The code in this repository is MIT-licensed ([LICENSE](LICENSE)).
+
+Wario Land: Super Mario Land 3 is © Nintendo. This project contains no game code or data, is not
+affiliated with or endorsed by Nintendo, and grants no rights to the game. You
+supply your own ROM, and everything built from it stays on your machine.
