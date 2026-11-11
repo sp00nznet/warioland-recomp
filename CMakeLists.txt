@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.21)
 project(rom C CXX)
 
 # C / C++ standards (platform_sdl.cpp uses C++20 designated initializers)
@@ -60,3 +60,18 @@ target_link_libraries(rom gbrt)
 
 # ----------------------------------------------------------------------------
 target_include_directories(rom PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/generated)
+
+if(MINGW)
+    # libgcc/libstdc++ go in the exe; winpthread stays a DLL, copied below.
+    target_link_options(rom PRIVATE -static-libgcc -static-libstdc++)
+    get_filename_component(MINGW_BIN "${CMAKE_C_COMPILER}" DIRECTORY)
+    add_custom_command(TARGET rom POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${MINGW_BIN}/libwinpthread-1.dll" $<TARGET_FILE_DIR:rom>)
+endif()
+
+# Put SDL2.dll next to the exe so rom.exe runs as-is.
+if(WIN32)
+    add_custom_command(TARGET rom POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_RUNTIME_DLLS:rom> $<TARGET_FILE_DIR:rom>
+        COMMAND_EXPAND_LISTS)
+endif()

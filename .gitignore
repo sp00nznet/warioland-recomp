@@ -56,3 +56,7 @@ Thumbs.db
 # gbrecomp output
 generated/
 !docs/**/*.gif
+setup.log
+*.cmd
+!Setup.cmd
+build-mingw/
